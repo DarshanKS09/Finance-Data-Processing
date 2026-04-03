@@ -1,13 +1,23 @@
-const express  = require("express");
+const express = require("express");
+const cors = require("cors");
+const routes = require("./routes");
+const notFound = require("./middleware/notFound");
+const errorHandler = require("./middleware/errorHandler");
+
 const app = express();
-const PORT = 5000;
+
+app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("backend running");
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Finance Data Processing and Access Control API is running.",
+  });
 });
-app.listen(PORT,()=>{
-    console.log("Server running on port 5000")
-    console.log("http://localhost:5000")
-})
+
+app.use("/api/v1", routes);
+app.use(notFound);
+app.use(errorHandler);
+
 module.exports = app;

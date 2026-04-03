@@ -1,10 +1,12 @@
 {
   "name": "zorvyn-backend-assessment",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Finance Data Processing and Access Control backend service",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "check": "node --check src/server.js && node --check src/app.js"
   },
   "keywords": [],
   "author": "",
