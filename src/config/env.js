@@ -1,8 +1,11 @@
+const path = require("path");
 const dotenv = require("dotenv");
 
-dotenv.config();
+dotenv.config({
+  path: path.resolve(__dirname, "../../.env"),
+});
 
-const requiredVariables = ["PORT", "MONGO_URI", "JWT_SECRET", "JWT_EXPIRES_IN"];
+const requiredVariables = ["MONGO_URI", "JWT_SECRET", "JWT_EXPIRES_IN"];
 
 requiredVariables.forEach((variableName) => {
   if (!process.env[variableName]) {
